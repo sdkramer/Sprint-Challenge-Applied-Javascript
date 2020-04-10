@@ -47,6 +47,10 @@ cardDiv.classList = 'card'
 headLine.classList ='headline'
 imageContainer.classList = 'img-container'
 
-cardDiv.appendChild
+cardDiv.appendChild(headLine)
+cardDiv.appendChild(author)
+author.appendChild(imageContainer)
+imageContainer.appendChild(image)
+author.appendChild(authorName)
 
 }

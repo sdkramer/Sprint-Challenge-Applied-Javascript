@@ -34,7 +34,7 @@ error => {
 }
 )
 
-function cardMaker () {
+function cardMaker (head, imgSource, name) {
 
 const cardDiv = document.createElement('div')
 const headLine = document.createElement('div')
@@ -53,4 +53,13 @@ author.appendChild(imageContainer)
 imageContainer.appendChild(image)
 author.appendChild(authorName)
 
+headLine.textContent = head
+image.src = imgSource
+authorName.textContent = name
+
+cardEntry.appendChild(cardDiv)
+return cardDiv
+
 }
+
+cardMaker('My Article', '#', 'Me')

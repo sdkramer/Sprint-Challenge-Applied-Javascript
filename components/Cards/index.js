@@ -21,4 +21,32 @@
 
 const cardEntry = document.querySelector('.cards-container')
 
-console.log(cardEntry)
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then(
+response => {
+  const articles = response.data.articles
+// console.log(articles)
+}
+)
+.catch(
+error => {
+
+}
+)
+
+function cardMaker () {
+
+const cardDiv = document.createElement('div')
+const headLine = document.createElement('div')
+const author = document.createElement('div')
+const imageContainer = document.createElement('div')
+const image =document.createElement('img')
+const authorName = document.createElement('span')
+
+cardDiv.classList = 'card'
+headLine.classList ='headline'
+imageContainer.classList = 'img-container'
+
+cardDiv.appendChild
+
+}

@@ -40,7 +40,7 @@ error => {
 
 /***cardMaker function****/
 
-function cardMaker (head, imgSource, name) {
+function cardMaker ({headline, authorPhoto, authorName) {
 
   const cardDiv = document.createElement('div')
   const headLine = document.createElement('div')
@@ -59,9 +59,9 @@ function cardMaker (head, imgSource, name) {
   imageContainer.appendChild(image)
   author.appendChild(authorName)
   
-  headLine.textContent = head
-  image.src = imgSource
-  authorName.textContent = name
+  headLine.textContent = headline
+  image.src = authorPhoto
+  authorName.textContent = authorName
   
   cardEntry.appendChild(cardDiv)
   return cardDiv

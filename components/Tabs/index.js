@@ -13,7 +13,7 @@ const entryPointTabs = document.querySelector('.topics')
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
 .then(
 response => {
-console.log(response)
+console.log(response.data.topics)
 }
 )
 .catch(
@@ -21,3 +21,17 @@ error => {
 
 }
 )
+
+
+function tabMaker (top) {
+
+  const tab = document.createElement('div')
+  tab.classList = ('tab')
+  entryPointTabs.appendChild(tab)
+  tab.textContent = top
+
+  return tab
+}
+ 
+tabMaker('works!')
+tabMaker('another!')

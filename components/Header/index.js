@@ -14,7 +14,6 @@
 // console.log('Working yeah!')
 
 const headerContainer = document.querySelector('.header-container')
-debugger
 
 function Header() {
 

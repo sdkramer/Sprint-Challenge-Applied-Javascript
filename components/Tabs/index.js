@@ -13,7 +13,10 @@ const entryPointTabs = document.querySelector('.topics')
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
 .then(
 response => {
-console.log(response.data.topics)
+  const tabArray = response.data.topics
+  tabArray.forEach(element => {
+    tabMaker(element)
+  })
 }
 )
 .catch(
@@ -33,5 +36,3 @@ function tabMaker (top) {
   return tab
 }
  
-tabMaker('works!')
-tabMaker('another!')

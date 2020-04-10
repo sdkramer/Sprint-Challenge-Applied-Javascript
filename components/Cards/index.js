@@ -24,9 +24,10 @@ const cardEntry = document.querySelector('.cards-container')
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(
 response => {
-  const articles = response.data.articles
-console.log(Object.entries(articles)[0])
-
+  const articlesArrays = Object.entries(response.data.articles)
+  const artArg = ((articlesArrays[2])[1])[0]
+console.log(artArg.headline)
+cardMaker(artArg)
 
 }
 
@@ -40,14 +41,14 @@ error => {
 
 /***cardMaker function****/
 
-function cardMaker ({headline, authorPhoto, authorName) {
+function cardMaker ({headline, authorPhoto, authorName}) {
 
   const cardDiv = document.createElement('div')
   const headLine = document.createElement('div')
   const author = document.createElement('div')
   const imageContainer = document.createElement('div')
   const image =document.createElement('img')
-  const authorName = document.createElement('span')
+  const nameOfAuthor = document.createElement('span')
   
   cardDiv.classList = 'card'
   headLine.classList ='headline'
@@ -57,11 +58,11 @@ function cardMaker ({headline, authorPhoto, authorName) {
   cardDiv.appendChild(author)
   author.appendChild(imageContainer)
   imageContainer.appendChild(image)
-  author.appendChild(authorName)
+  author.appendChild(nameOfAuthor)
   
   headLine.textContent = headline
   image.src = authorPhoto
-  authorName.textContent = authorName
+  nameOfAuthor.textContent = authorName
   
   cardEntry.appendChild(cardDiv)
   return cardDiv

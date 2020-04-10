@@ -23,18 +23,16 @@ const cardEntry = document.querySelector('.cards-container')
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(
-response => {
-  const articlesArrays = Object.entries(response.data.articles)
-  const artArg = (((articlesArrays[2])[1]))
-console.log(artArg)
-
-
-artArg.forEach(element => {
-  cardMaker(element)
-})
-
-}
-
+  response => {
+    const artTopics = Object.entries(response.data.articles)
+    console.log(artTopics)
+    for (let [key, value] of artTopics) {
+      value.forEach(element => {
+        cardMaker(element)
+      }
+        )
+    }
+  }
 )
 .catch(
 error => {
@@ -54,9 +52,10 @@ function cardMaker ({headline, authorPhoto, authorName}) {
   const image =document.createElement('img')
   const nameOfAuthor = document.createElement('span')
   
-  cardDiv.classList = 'card'
-  headLine.classList ='headline'
-  imageContainer.classList = 'img-container'
+  cardDiv.classList.add('card')
+  headLine.classList.add('headline')
+  imageContainer.classList.add('img-container')
+  author.classList.add('author')
   
   cardDiv.appendChild(headLine)
   cardDiv.appendChild(author)
@@ -76,3 +75,19 @@ function cardMaker ({headline, authorPhoto, authorName}) {
 
 
 // cardMaker('My Article', '#', 'Me')
+
+// response => {
+//   const articlesArrays = Object.entries(response.data.articles)
+//   const artArg = (((articlesArrays[2])[1]))
+// console.log(response.data.articles)
+
+
+// for (let i = 0; i < subArray.length; i++){
+//   const artArg = subArray[i]
+// }
+
+// artArg.forEach(element => {
+//   cardMaker(element)
+// })
+
+// }

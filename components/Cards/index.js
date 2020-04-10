@@ -25,9 +25,13 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(
 response => {
   const articlesArrays = Object.entries(response.data.articles)
-  const artArg = ((articlesArrays[2])[1])[0]
-console.log(artArg.headline)
-cardMaker(artArg)
+  const artArg = (((articlesArrays[2])[1]))
+console.log(artArg)
+
+
+artArg.forEach(element => {
+  cardMaker(element)
+})
 
 }
 

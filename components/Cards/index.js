@@ -25,8 +25,11 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(
 response => {
   const articles = response.data.articles
-// console.log(articles)
+console.log(Object.entries(articles)[0])
+
+
 }
+
 )
 .catch(
 error => {
@@ -34,32 +37,37 @@ error => {
 }
 )
 
+
+/***cardMaker function****/
+
 function cardMaker (head, imgSource, name) {
 
-const cardDiv = document.createElement('div')
-const headLine = document.createElement('div')
-const author = document.createElement('div')
-const imageContainer = document.createElement('div')
-const image =document.createElement('img')
-const authorName = document.createElement('span')
+  const cardDiv = document.createElement('div')
+  const headLine = document.createElement('div')
+  const author = document.createElement('div')
+  const imageContainer = document.createElement('div')
+  const image =document.createElement('img')
+  const authorName = document.createElement('span')
+  
+  cardDiv.classList = 'card'
+  headLine.classList ='headline'
+  imageContainer.classList = 'img-container'
+  
+  cardDiv.appendChild(headLine)
+  cardDiv.appendChild(author)
+  author.appendChild(imageContainer)
+  imageContainer.appendChild(image)
+  author.appendChild(authorName)
+  
+  headLine.textContent = head
+  image.src = imgSource
+  authorName.textContent = name
+  
+  cardEntry.appendChild(cardDiv)
+  return cardDiv
+  
+  }
 
-cardDiv.classList = 'card'
-headLine.classList ='headline'
-imageContainer.classList = 'img-container'
 
-cardDiv.appendChild(headLine)
-cardDiv.appendChild(author)
-author.appendChild(imageContainer)
-imageContainer.appendChild(image)
-author.appendChild(authorName)
 
-headLine.textContent = head
-image.src = imgSource
-authorName.textContent = name
-
-cardEntry.appendChild(cardDiv)
-return cardDiv
-
-}
-
-cardMaker('My Article', '#', 'Me')
+// cardMaker('My Article', '#', 'Me')
